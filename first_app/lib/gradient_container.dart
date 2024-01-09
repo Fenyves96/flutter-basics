@@ -1,4 +1,3 @@
-import 'package:first_app/styled_text.dart';
 import 'package:flutter/material.dart';
 
 const startAlignment = Alignment.topLeft;
@@ -13,11 +12,24 @@ class GradientContainer extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-        gradient: LinearGradient(colors: colors, begin: startAlignment, end: endAlignment),
+        gradient: LinearGradient(
+            colors: colors, begin: startAlignment, end: endAlignment),
       ),
-      child: const Center(
-        child: StyledText("Hello World!"),
+      child: Center(
+        child: Column(
+          children: [
+            Image.asset(
+              'assets/images/dice-2.png',
+              width: 200,
+            ),
+            TextButton(onPressed: rollDice, child: const Text('Roll Dice'))
+          ],
+        ),
       ),
     );
+  }
+
+  void rollDice() {
+    print("asd");
   }
 }
