@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 
 class AnswerButton extends StatelessWidget {
-  AnswerButton({super.key, required this.answerText, required this.onTap});
+  const AnswerButton(
+      {super.key, required this.answerText, required this.onTap});
 
   final void Function() onTap;
   final String answerText;
@@ -18,7 +19,10 @@ class AnswerButton extends StatelessWidget {
             vertical: 10,
             horizontal: 40,
           )),
-      child: Text(answerText),
+      child: Text(
+        answerText,
+        textAlign: TextAlign.center,
+      ),
     );
   }
 }
