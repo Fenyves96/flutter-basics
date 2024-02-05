@@ -22,7 +22,9 @@ class QuestionsSummary extends StatelessWidget {
                       height: 30,
                       alignment: Alignment.center,
                       decoration: BoxDecoration(
-                          color: const Color.fromARGB(255, 249, 75, 244),
+                          color: data['correct_answer'] == data['user_answer']
+                              ? const Color.fromARGB(255, 40, 181, 246)
+                              : const Color.fromARGB(255, 249, 75, 244),
                           borderRadius: BorderRadius.circular(100),
                           border: Border.all(color: Colors.black)),
                       child: Text(
