@@ -5,7 +5,6 @@ class NewExpense extends StatefulWidget {
 
   @override
   State<NewExpense> createState() {
-    // TODO: implement createState
     return _NewExpenseState();
   }
 }
@@ -40,11 +39,13 @@ class _NewExpenseState extends State<NewExpense> {
             maxLength: 50,
             keyboardType: TextInputType.number,
             decoration: const InputDecoration(
+              prefixText: '\$',
               label: Text('amount'),
             ),
           ),
           Row(
             children: [
+              TextButton(onPressed: () {}, child: const Text('Cancel')),
               ElevatedButton(
                 onPressed: () {
                   print(_titleController.text);
@@ -52,7 +53,6 @@ class _NewExpenseState extends State<NewExpense> {
                 },
                 child: const Text('Save Expense'),
               ),
-              TextButton(onPressed: () {}, child: Text('Cancel')),
             ],
           ),
         ],
