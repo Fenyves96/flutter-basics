@@ -17,7 +17,8 @@ class MealItem extends StatelessWidget {
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(8),
       ),
-      clipBehavior: Clip.hardEdge,
+      clipBehavior: Clip
+          .hardEdge, //without this Stack widget ignores Card widget's settings
       elevation: 2,
       child: InkWell(
         onTap: () {},
