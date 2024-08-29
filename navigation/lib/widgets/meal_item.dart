@@ -9,7 +9,10 @@ class MealItem extends StatelessWidget {
   const MealItem({
     super.key,
     required this.meal,
+    required this.onSelectMeal,
   });
+
+  final void Function(Meal meal) onSelectMeal;
 
   String get complexityText {
     return meal.complexity.name[0].toUpperCase() +
@@ -32,7 +35,9 @@ class MealItem extends StatelessWidget {
           .hardEdge, //without this Stack widget ignores Card widget's settings
       elevation: 2,
       child: InkWell(
-        onTap: () {},
+        onTap: () {
+          onSelectMeal(meal);
+        },
         //multiple widgets are positioned
         //on top of each other
         child: Stack(
