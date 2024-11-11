@@ -17,7 +17,9 @@ class FilterScreen extends ConsumerWidget {
         SwitchListTile(
           value: activeFilters[Filter.glutenFree]!,
           onChanged: (isChanged) {
-           ref.read(filtersProvider.notifier).setFilter(Filter.glutenFree, isChanged)
+            ref
+                .read(filtersProvider.notifier)
+                .setFilter(Filter.glutenFree, isChanged);
           },
           title: Text(
             'Gluten-free',
@@ -34,10 +36,12 @@ class FilterScreen extends ConsumerWidget {
           activeColor: Theme.of(context).colorScheme.tertiary,
           contentPadding: const EdgeInsets.only(left: 34, right: 22),
         ),
-         SwitchListTile(
+        SwitchListTile(
           value: activeFilters[Filter.lactoseFree]!,
           onChanged: (isChanged) {
-           ref.read(filtersProvider.notifier).setFilter(Filter.lactoseFree, isChanged)
+            ref
+                .read(filtersProvider.notifier)
+                .setFilter(Filter.lactoseFree, isChanged);
           },
           title: Text(
             'Lactose-free',
@@ -54,10 +58,12 @@ class FilterScreen extends ConsumerWidget {
           activeColor: Theme.of(context).colorScheme.tertiary,
           contentPadding: const EdgeInsets.only(left: 34, right: 22),
         ),
-       SwitchListTile(
+        SwitchListTile(
           value: activeFilters[Filter.vegetarian]!,
           onChanged: (isChanged) {
-           ref.read(filtersProvider.notifier).setFilter(Filter.vegetarian, isChanged)
+            ref
+                .read(filtersProvider.notifier)
+                .setFilter(Filter.vegetarian, isChanged);
           },
           title: Text(
             'Vegetarian',
@@ -74,10 +80,12 @@ class FilterScreen extends ConsumerWidget {
           activeColor: Theme.of(context).colorScheme.tertiary,
           contentPadding: const EdgeInsets.only(left: 34, right: 22),
         ),
-       SwitchListTile(
+        SwitchListTile(
           value: activeFilters[Filter.vegan]!,
           onChanged: (isChanged) {
-           ref.read(filtersProvider.notifier).setFilter(Filter.vegan, isChanged)
+            ref
+                .read(filtersProvider.notifier)
+                .setFilter(Filter.vegan, isChanged);
           },
           title: Text(
             'Vegan',
