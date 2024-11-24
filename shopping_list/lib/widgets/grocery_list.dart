@@ -37,15 +37,25 @@ class _GroceryListState extends State<GroceryList> {
         body: !_groceryItems.isEmpty
             ? ListView.builder(
                 itemCount: _groceryItems.length,
-                itemBuilder: (ctx, index) => ListTile(
-                  title: Text(_groceryItems[index].name),
-                  leading: Container(
-                    width: 24,
-                    height: 24,
-                    color: _groceryItems[index].category.color,
-                  ),
-                  trailing: Text(
-                    _groceryItems[index].quantity.toString(),
+                itemBuilder: (ctx, index) => Dismissible(
+                  direction: DismissDirection.endToStart,
+                  key: Key(_groceryItems[index].id),
+                  onDismissed: (direction) {
+                    var deletedItemName = _groceryItems[index].name!;
+                    _groceryItems.remove(_groceryItems[index]);
+                    ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                        content: Text(deletedItemName + ' item deleted')));
+                  },
+                  child: ListTile(
+                    title: Text(_groceryItems[index].name),
+                    leading: Container(
+                      width: 24,
+                      height: 24,
+                      color: _groceryItems[index].category.color,
+                    ),
+                    trailing: Text(
+                      _groceryItems[index].quantity.toString(),
+                    ),
                   ),
                 ),
               )
