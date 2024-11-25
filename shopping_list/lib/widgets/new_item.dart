@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:io';
 
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -24,25 +25,26 @@ class _NewItemState extends State<NewItem> {
   //globalKey adds easy access to underlying widget
   //if the build method is executed again (because we set some state),
   // the form wont rebuild and keeps its internal state
-  void _saveItem() {
+  void _saveItem() async {
     if (_formKey.currentState!.validate()) {
       _formKey.currentState!.save();
       final url = Uri.https('flutter-prep-9d493-default-rtdb.firebaseio.com',
           'shopping-list.json');
-      http.post(url,
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: json.encode({
-            'name': _enteredName,
-            'quantity': _enteredQuantity,
-            'category': _selectedCategory.title
-          }));
-      // Navigator.of(context).pop(GroceryItem(
-      //     id: DateTime.now().toString(),
-      //     name: _enteredName,
-      //     quantity: _enteredQuantity,
-      //     category: _selectedCategory));
+      final response = await http.post(
+        url,
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: json.encode({
+          'name': _enteredName,
+          'quantity': _enteredQuantity,
+          'category': _selectedCategory.title
+        }),
+      );
+
+      if (!context.mounted) return;
+
+      Navigator.of(context).pop();
     }
   }
 
