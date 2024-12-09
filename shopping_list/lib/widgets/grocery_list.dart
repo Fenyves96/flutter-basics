@@ -28,6 +28,12 @@ class _GroceryListState extends State<GroceryList> {
         _error = 'Failed to fetch data';
       });
     }
+    if (response.body == 'null') {
+      setState(() {
+        _isLoading = false;
+      });
+      return;
+    }
     final Map<String, dynamic> listData = json.decode(response.body);
     final List<GroceryItem> loadedItems = [];
     for (final item in listData.entries) {
@@ -75,7 +81,7 @@ class _GroceryListState extends State<GroceryList> {
     setState(() {
       _groceryItems.remove(item);
     });
-    final url = Uri.https('flutte-prep-9d493-default-rtdb.firebaseio.com',
+    final url = Uri.https('flutter-prep-9d493-default-rtdb.firebaseio.com',
         'shopping-list/${item.id}.json');
     final response = await http.delete(url);
     if (response.statusCode >= 400) {
